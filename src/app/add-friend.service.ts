@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AddFriendService {
-  url = 'http://localhost:9001/addFriend';
+  url = 'http://localhost:3500/addFriend';
   constructor(
     private http: HttpClient,
   ) { }
