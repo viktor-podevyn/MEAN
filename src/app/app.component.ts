@@ -1,55 +1,56 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import {Friend} from './friend';
-import {Friend} from './addFriend';
-import {OnInit} from '@angular/core';
+import {AddFriendService} from './add-friend.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'MEAN-stack';
-  public allFriends = [{firstName: null, lastName: null, email: null, phoneNumber: null}];
-  friend = new Friend('', '', '', 0);
+export class AppComponent {
+  title = 'mean-angular';
+  friendList: Friend[] | undefined;
+  friendModel = new Friend();
+  codingList = ['Javascript', 'PHP', 'Java', 'Python', 'C++'];
+
+  getAllFriends = 'http://localhost:3500/allFriends';
+
+  addFriend(): void {
+    this.addFriendService.postRequest(this.friendModel).subscribe(succes => this.fetchFriends()
+            .then(res => console.log(this.friendModel)),
+        error => console.error(error));
+  }
+
+  public async fetchFriends(): Promise<any> {
+    await fetch('http://localhost:3500/allFriends', {method: 'get', headers: {'Content-Type': 'application/json'}})
+        .then(response => {
+          return response.json() as Promise<any>;
+        })
+        .then(response => {
+          console.log(response)
+          return this.friendList = response;
+        });
+  }
+
+
+
+  ngOnInit(): any {
+    this.fetchFriends().then(r => console.log(r));
+  }
 
   constructor(
-      private friendService: FriendService,
+      private addFriendService: AddFriendService,
   ) {
-    this.friendService = friendService;
   }
 
-  onSubmit(): void {
-    this.friendService.addFriend(this.friend).subscribe
-    (data => this.getRequest
-    ('http://localhost:3500/addFriend').then(res => console.log(this.allFriends)), error => console.error(error));
+  public async deleteFriend(friend: Friend): Promise<any> {
+    this.addFriendService.deleteFriend(friend).subscribe
+    (response => this.fetchFriends().then(response => console.log(response)), error => console.error(error));
   }
 
-  async getRequest(url: string): Promise<any> {
-    // custom getter
-    await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => res.json()).then(data => this.allFriends = data);
+  public async updateFriend(friend: Friend): Promise<any> {
+    this.addFriendService.updateFriend(friend, this.friendModel).subscribe
+    (response => this.fetchFriends().then(response => console.log(response)), error => console.error(error));
   }
 
-  // tslint:disable-next-line:use-lifecycle-interface
-  ngOnInit(): any {
-    this.getRequest('http://localhost:3500/allFriends').then(res => console.log(this.allFriends));
-  }
-
-  public async deleteFriend(email: string): Promise<any> {
-    this.friendService.deleteFriend(email).subscribe
-    (data => this.getRequest
-    ('http://localhost:3500/deleteFriend').then(res => console.log(this.allFriends)), error => console.error(error));
-    await fetch('http://localhost:3500/allFriends', {method: 'get', headers: {'Content-Type': 'application/json'}});
-    //    .then(response => {
-    //      return response.json() as Promise<any>;
-    //    })
-    //    .then(response => {
-    //      return this.allFriends = response;
-    //    });
-  }
 }

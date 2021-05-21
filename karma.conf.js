@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/MEAN-stack'),
+      dir: require('path').join(__dirname, './coverage/meanstack'),
       subdir: '.',
       reporters: [
         { type: 'html' },

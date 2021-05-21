@@ -1,0 +1,143 @@
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto
+;
+  height: 100px;
+}
+
+.input-text {
+  display: inline;
+  margin: 0;
+  border: none;
+  color: black;
+  border-radius: 0.4rem;
+  padding: 10px;
+}
+
+.list ul li {
+  position: absolute;
+  right: 0;
+  background: #f34541;
+  color: blue !important;
+  text-transform: lowercase;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 0.4rem;
+  display: inline-block;
+  border:none;
+}
+
+.add-btn {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #7313cb;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 0.4rem;
+  display: inline-block;
+  border: none;
+}
+
+.submit-btn {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: darkolivegreen;
+  margin: 20px -15px;
+  padding: 10px;
+  border-radius: 0.4rem;
+  display: inline-block;
+  border: none;
+  position: absolute;
+}
+
+.delete-btn {
+  position: absolute;
+  right: -290px;
+  background: #f34541;
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 0.4rem;
+  display: inline-block;
+  border: none;
+  top: 1px;
+}
+
+.update-btn {
+  position: absolute;
+  right: -150px;
+  background: darkolivegreen;
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 0.4rem;
+  display: inline-block;
+  border: none;
+  top: 1px;
+}
+
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.list ul li {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: #000000;
+  background-color: white;
+  line-height: 30px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #cccccc;
+  padding: 10px;
+  position: relative;
+  margin: 15px;
+}
+
+.container {
+  color: #fff;
+  max-width: 500px;
+  margin: auto;
+  padding: 5px;
+  text-align: center
+}
+
+label {
+  width:180px;
+  clear:left;
+  text-align:right;
+  padding-right:10px;
+}
+
+.app-title {
+  text-align: center;
+  color: #212529;
+  font-size: 60px;
+}
+
+input, label {
+  float:left;
+}
+
+h3 {
+  color: #77997a;
+  margin: auto;
+  width: 300px;
+  margin-bottom: 15px;
+}
